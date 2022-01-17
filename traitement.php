@@ -21,8 +21,8 @@ if (!empty($_COOKIE['pseudo']) && !empty($_COOKIE['score'])) {
     $stmt->bindParam(':createdAt', $datetime);
     $stmt->execute();
 
-    $stmt->close();
-    $pdo->close();
+    $stmt = null;
+    $pdo = null;
 
     header ('location: ./index.php');
 } else {

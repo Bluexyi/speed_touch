@@ -1,20 +1,33 @@
-let score = 0;
 let scoreElt = document.getElementById('score');
 let comboElt = document.getElementById('combo');
 const startbtn = document.getElementById('startBtn');
 const inputName = document.getElementById('pseudo');
-scoreElt.innerText = score;
 let gameFinish = false;
-let combo = 0
 let canStart = false;
 let pseudo = "none";
+let score = 0;
+let combo = 0
 
 let good_input = new Audio('./sounds/good_input2.wav');
 let bad_input = new Audio('./sounds/bad_input2.wav');
-let ambiance = new Audio('./sounds/16bit_mix.wav');
+let end_explosion = new Audio('./sounds/16bit_Explosion.mp3');
+let ambiance = null;
+
+audioId = Math.floor(Math.random() * (2 - 0)) + 0;
+if(audioId == 0){
+    ambiance = new Audio('./sounds/TopGear.mp3');
+}else if (audioId == 1) {
+    ambiance = new Audio('./sounds/BigBlue.mp3');
+}
+else{
+    ambiance = new Audio('./sounds/TopGear.mp3');
+}
+
+scoreElt.innerText = score;
+inputName.value = "";
 
 inputName.addEventListener('input', function () {
-    if (this.value.length < 4) {
+    if (this.value.length < 3) {
         if (canStart == true) {
             startbtn.className = "btnStartDisable";
         }
@@ -25,7 +38,6 @@ inputName.addEventListener('input', function () {
         }
         return canStart = true;
     }
-    //TODO: faire en sorte qu'on puisse appuyer sur start uniquement si prenom conforme et recuerer noms saisie
 });
 
 currentIdInput = 0;
@@ -124,7 +136,7 @@ function startTimer(timer, display) {
             gameEnd();
             clearInterval(interval);
         }
-
+        
         timer--;
 
     }, 1000);
@@ -132,17 +144,16 @@ function startTimer(timer, display) {
 
 startbtn.addEventListener("click", () => {
     if (canStart) {
+        pseudo = inputName.value;
         const notStart = document.getElementById('notStart');
-        notStart.remove()
+        notStart.remove();
         ambiance.play();
-        let maxTime = 3 * 1,
-            display = document.querySelector('#time');
+        let maxTime = 9 * 1;
+        display = document.querySelector('#time');
         startTimer(maxTime, display);
         activeInput();
         activeTouch();
     }
-
-    //Todo ajouter nom ici demain
 });
 
 function update(input) {
@@ -159,10 +170,12 @@ function createCookie(name, value) {
 }
 
 function gameEnd() {
+    ambiance.pause();
+    end_explosion.play();
+
     let element = document.getElementById(currentIdInput);
     element.classList.remove("active");
-    ambiance.pause();
-
+    
     let divEnd = document.createElement("div");
     divEnd.className = "end";
 
@@ -176,21 +189,32 @@ function gameEnd() {
 
     divEnd.appendChild(pTxtScore);
 
-    let divBtnRetry = document.createElement("div");
-    divBtnRetry.id = "retryBtn";
-    let pTxtBtnRetry = document.createElement("p");
-    pTxtBtnRetry.innerText = "REJOUER";
-    divBtnRetry.appendChild(pTxtBtnRetry);
+    let divBtnSave = document.createElement("div");
+    divBtnSave.id = "saveBtn";
+    divBtnSave.className = "retryBtn";
+    let pTxtBtnSave = document.createElement("p");
+    pTxtBtnSave.innerText = "SAUVEGARDER TON SCORE";
+    divBtnSave.appendChild(pTxtBtnSave);
+    divEnd.appendChild(divBtnSave);
 
-    divEnd.appendChild(divBtnRetry);
+    let divBtnNotSave = document.createElement("div");
+    divBtnNotSave.id = "notSaveBtn";
+    divBtnNotSave.className = "retryBtn";
+    let pTxtBtnNotSave = document.createElement("p");
+    pTxtBtnNotSave.innerText = "NE PAS SAUVEGARDER TON SCORE";
+    divBtnNotSave.appendChild(pTxtBtnNotSave);
+    divEnd.appendChild(divBtnNotSave);
 
     document.body.appendChild(divEnd)
 
-    divBtnRetry.addEventListener("click", () => {
+    divBtnSave.addEventListener("click", () => {
         window.location.href = "./traitement.php";
-        //window.location.reload();
     });
 
-    createCookie('pseudo', 'roro');
+    divBtnNotSave.addEventListener("click", () => {
+        window.location.reload();
+    });
+
+    createCookie('pseudo', pseudo);
     createCookie('score', score);
 }

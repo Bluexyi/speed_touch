@@ -29,6 +29,71 @@
     z-index: 99;
 }
 
+
+
+#scores{
+    position: absolute;
+    left: 20px;
+    display: flex;
+    flex-direction: column;
+    color: white;
+    border: 1px solid var(--clr-not-active);
+    border-radius: 0.25em;
+    font-family: 'Vcr';
+    box-shadow: rgba(240, 46, 170, 0.4) -5px 5px, rgba(240, 46, 170, 0.3) -10px 10px, rgba(240, 46, 170, 0.2) -15px 15px, rgba(240, 46, 170, 0.1) -20px 20px, rgba(240, 46, 170, 0.05) -25px 25px;
+}
+
+#scores h2{
+    text-align: center;
+    font-size: 1.1em;
+    background-color: var(--clr-not-active);
+    color: var(--clr-bg);
+}
+
+#scores p{
+    font-size: 0.8em;
+}
+
+
+#listScores{
+    display: flex;
+    flex-direction: row;
+    border-top: 1px solid var(--clr-not-active);
+    max-height: 30vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.columnScore{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    
+}
+
+.pseudo{
+    width: 100%;
+    padding: 5px;
+    border-bottom: 1px solid var(--clr-not-active);
+}
+
+.score{
+    padding: 5px;
+    border-bottom: 1px solid var(--clr-not-active);
+    margin-right: 20px;
+}
+
+.pseudos{
+    padding: 5px;
+    text-align: right;
+}
+
+.scores{
+    padding: 5px;
+    text-align: left;
+}
+
+
 #pseudo{
     margin: 20px;
     text-align: center;
@@ -79,6 +144,7 @@
     text-align: center;
     font-family: 'Vcr';
     color: white;
+    line-height: 130%;
     width: 60%;
     margin: 10px;
 }
@@ -131,13 +197,16 @@ body{
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    background-color: var(--clr-bg);
+    background: url('./bg.webp');
+    background-position: center;
+    background-size: cover;
 }
 
 #virtualKeyboard{
     border: 0.125em solid var(--clr-not-active);
     color: var(--clr-not-active);
     box-shadow: 0 0 2em 0.2em var(--clr-not-active);
+    background-color:rgba(32, 32, 32, 0.95);
     border-radius: 0.25em;
     padding: 10px;
     margin-top: 10px;
@@ -190,16 +259,21 @@ h1{
     width: 70%;
     justify-content: space-around;
     flex-wrap: wrap;
+    background-color:rgba(32, 32, 32, 0.7);
+    border-radius: 0.5em;
+    box-shadow: rgba(240, 46, 170, 0.4) 0px 5px, rgba(240, 46, 170, 0.3) 0px 10px, rgba(240, 46, 170, 0.2) 0px 15px, rgba(240, 46, 170, 0.1) 0px 20px, rgba(240, 46, 170, 0.05) 0px 25px;
 }
 
 .info p{
     font-family: "Fipps";
     color: var(--clr-not-active);
+    font-size: 1.5em;
+    margin-top: -20px;
 }
 
-#retryBtn{
+.retryBtn{
     margin: 10px;
-    width: 200px;
+    padding: 7px;
     height: 70px;
     border: 0.125em solid var(--clr-active);
     border-radius: 0.25em;
@@ -213,7 +287,7 @@ h1{
     cursor: pointer;
 }
 
-#retryBtn:hover{
+.retryBtn:hover{
     background-color: var(--clr-active);
     color: var(--clr-bg);
     box-shadow: 0 0 2em 0.2em var(--clr-active);
