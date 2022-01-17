@@ -1,0 +1,269 @@
+@font-face { font-family: 'Vcr'; src: url('./fonts/VCR_OSD_MONO.ttf');}
+@font-face { font-family: 'Fipps'; src: url('./fonts/Fipps-Regular.otf');}
+   
+
+:root{
+    --clr-active: rgb(20, 255, 51);
+    --clr-not-active: rgb(255 20 189);
+    --clr-bg: rgb(32, 32, 32);
+}
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+#notStart{
+    padding-top: 50px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(32, 32, 32, 0.9);
+    justify-content: center;
+    align-items: center;
+    z-index: 99;
+}
+
+#pseudo{
+    margin: 20px;
+    text-align: center;
+    padding: 5px;
+    background-color: rgba(32, 32, 32, 0.9);
+    border: 0.125em solid var(--clr-active);
+    border-radius: 0.25em;
+    color: var(--clr-active);
+    font-family: 'Vcr';
+    font-size: 2em;
+}
+
+#pseudo::placeholder {
+    color: var(--clr-active);
+    font-family: 'Vcr';
+}
+
+#pseudo:focus{
+    box-shadow: 0 0 0.5em 0.1em var(--clr-active);
+    outline: none;
+}
+
+.end{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(32, 32, 32, 0.9);
+    justify-content: center;
+    align-items: center;
+    z-index: 99;
+}
+
+.end .msgScore {
+    text-align: center;
+    font-family: 'Vcr';
+    color: white;
+    font-size: 3em;
+    animation: anime_end_text 1s 0s ease-in-out infinite;
+	-webkit-animation: anime_end_text 1s 0s ease-in-out infinite;
+}
+
+#notStart .regle{
+    text-align: center;
+    font-family: 'Vcr';
+    color: white;
+    width: 60%;
+    margin: 10px;
+}
+
+.green{
+    color: var(--clr-active);
+}
+
+.bold{
+    font-weight: bold;
+}
+
+#startBtn{
+    margin: 10px;
+    width: 200px;
+    height: 70px;
+    border: 0.125em solid var(--clr-active);
+    border-radius: 0.25em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--clr-active);
+    font-family: 'Vcr';
+    font-size: 3em;
+    transition: 0.2s ease-in-out;
+    cursor: pointer;
+}
+
+#startBtn:hover{
+    background-color: var(--clr-active);
+    color: var(--clr-bg);
+    box-shadow: 0 0 2em 0.2em var(--clr-active);
+}
+
+.btnStartDisable{
+    border: 0.125em solid rgb(61, 61, 61) !important;
+    color: rgb(61, 61, 61) !important;
+    cursor: default !important;
+}
+
+.btnStartDisable:hover{
+    background-color: var(--clr-bg) !important;
+    color: rgb(61, 61, 61) !important;
+    box-shadow: none !important;
+}
+
+body{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    background-color: var(--clr-bg);
+}
+
+#virtualKeyboard{
+    border: 0.125em solid var(--clr-not-active);
+    color: var(--clr-not-active);
+    box-shadow: 0 0 2em 0.2em var(--clr-not-active);
+    border-radius: 0.25em;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+h1{
+    font-family: "Fipps";
+    color: var(--clr-not-active);
+    font-size: 5em;
+    margin-top: -70px;
+    z-index: 100;
+}
+
+.touch p{
+    font-size: 3em;
+    font-family: 'Vcr';
+}
+
+.touch{
+    border: 0.125em solid var(--clr-not-active);
+    color: var(--clr-not-active);
+    border-radius: 0.25em;
+    height: 80px;
+    width: 80px;
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.active{
+    border: 0.125em solid var(--clr-active);
+    border: 2px solid var(--clr-active);
+    box-shadow: 0 0 2em 0.5em var(--clr-active);
+    background-color: var(--clr-active);
+    color: var(--clr-bg);
+	animation: animate_active 0.1s 0s ease;
+	-webkit-animation: animate_active 0.1s 0s ease;
+}
+
+.info{
+    display: flex;
+    width: 70%;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.info p{
+    font-family: "Fipps";
+    color: var(--clr-not-active);
+}
+
+#retryBtn{
+    margin: 10px;
+    width: 200px;
+    height: 70px;
+    border: 0.125em solid var(--clr-active);
+    border-radius: 0.25em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--clr-active);
+    font-family: 'Vcr';
+    font-size: 3em;
+    transition: 0.2s ease-in-out;
+    cursor: pointer;
+}
+
+#retryBtn:hover{
+    background-color: var(--clr-active);
+    color: var(--clr-bg);
+    box-shadow: 0 0 2em 0.2em var(--clr-active);
+}
+
+@keyframes animate_active {
+	0%{
+        box-shadow: 0 0 0 0 var(--clr-active);
+	}
+	50%{
+        box-shadow: 0 0 2em 5em var(--clr-active);
+	}
+	100%{
+        box-shadow: 0 0 2em 0.5em var(--clr-active);
+	}
+}
+
+@-webkit-keyframes animate_active {
+	0%{
+        box-shadow: 0 0 0 0 var(--clr-active);
+	}
+	50%{
+        box-shadow: 0 0 2em 5em var(--clr-active);
+	}
+	100%{
+        box-shadow: 0 0 2em 0.5em var(--clr-active);
+	}
+}
+
+
+@keyframes anime_end_text {
+	0%{
+        font-size: 3em;
+	}
+	50%{
+        font-size: 3.2em;
+	}
+	100%{
+        font-size: 3em;
+	}
+}
+
+@-webkit-keyframes anime_end_text {
+	0%{
+        font-size: 3em;
+	}
+	50%{
+        font-size: 3.2em;
+	}
+	100%{
+        font-size: 3em;
+	}
+}
