@@ -29,7 +29,7 @@
             Appuie sur la touche correspondante de ton clavier pour gagner 10points.<br>
             Fais des séries de bonnes lettres et tu augmenteras ton combo ! <br>
             Augmenter ton combo ajoutera un coefficient multiplicateur aux points que tu gagnes, génial non? <br>
-            Attention, si tu appuie sur une mauvaise lettre, tu perdras 10 points et ton combo sera remis à 0..<br><br>
+            Attention, si tu appuie sur une mauvaise lettre, tu perdras 50 points et ton combo sera remis à 0..<br><br>
 
             Tu as <span class="bold">1 minute et 30 seconds</span> pour exploser le score ! <br>
             A toi de jouer !

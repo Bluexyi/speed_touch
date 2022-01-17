@@ -128,8 +128,13 @@ function checkInput(input) {
     } else {
         bad_input.play();
         if (score > 0) {
-            displayPoint(-10);
-            score -= 10;
+            displayPoint(-50);
+            if (score > 50){
+                score -= 50;
+            }else{
+                score = 0;
+            }
+            
             combo = 0
         }
     }
