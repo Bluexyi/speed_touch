@@ -2,16 +2,24 @@ let scoreElt = document.getElementById('score');
 let comboElt = document.getElementById('combo');
 const startbtn = document.getElementById('startBtn');
 const inputName = document.getElementById('pseudo');
+const pointDisplay = document.getElementById('point');
 let gameFinish = false;
 let canStart = false;
 let pseudo = "none";
 let score = 0;
-let combo = 0
+let combo = 0;
+let maxTime = 90 * 1;
 
 let good_input = new Audio('./sounds/good_input2.wav');
 let bad_input = new Audio('./sounds/bad_input2.wav');
 let end_explosion = new Audio('./sounds/16bit_Explosion.mp3');
 let ambiance = null;
+
+scoreElt.innerText = score;
+inputName.value = "";
+
+pointDisplay.innerHTML = "+00";
+pointDisplay.style.color = "transparent";
 
 audioId = Math.floor(Math.random() * (2 - 0)) + 0;
 if(audioId == 0){
@@ -23,8 +31,7 @@ else{
     ambiance = new Audio('./sounds/TopGear.mp3');
 }
 
-scoreElt.innerText = score;
-inputName.value = "";
+
 
 inputName.addEventListener('input', function () {
     if (this.value.length < 3) {
@@ -59,6 +66,16 @@ for (let i = 0; i < touchs.length; i++) {
     p.innerText = touchs[i];
     div.appendChild(p);
     virtualKeyboard.appendChild(div);
+}
+
+function displayPoint(point){
+    if(point < 0){
+        pointDisplay.style.color = "#ff1414";
+        pointDisplay.innerHTML = point;
+    }else{
+        pointDisplay.style.color = "#14ff33";
+        pointDisplay.innerHTML = "+" + point;
+    }
 }
 
 function activeTouch() {
@@ -102,6 +119,7 @@ function checkInput(input) {
     let idInput = touchs.indexOf(input);
     if (touchActives[idInput] == 1) {
         good_input.play();
+        displayPoint(10 * (1 + combo / 10));
         score += 10 * (1 + combo / 10);
         combo++;
         touchActives[idInput] = 0;
@@ -110,6 +128,7 @@ function checkInput(input) {
     } else {
         bad_input.play();
         if (score > 0) {
+            displayPoint(-10);
             score -= 10;
             combo = 0
         }
@@ -142,15 +161,21 @@ function startTimer(timer, display) {
     }, 1000);
 }
 
+function activeBgAnimation(){
+    document.body.className = "bgAnim";
+}
+
 startbtn.addEventListener("click", () => {
     if (canStart) {
         pseudo = inputName.value;
         const notStart = document.getElementById('notStart');
         notStart.remove();
         ambiance.play();
-        let maxTime = 90 * 1;
+
         display = document.querySelector('#time');
+
         startTimer(maxTime, display);
+        activeBgAnimation();
         activeInput();
         activeTouch();
     }
