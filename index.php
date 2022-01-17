@@ -14,7 +14,7 @@
 
     <div id="notStart">
         <div id="scores">
-            <h2>Tableau des scores</h2>
+            <h2>SCORES</h2>
             <div id="listScores">
                 <?php include("./recupereListeScore.php") ?>
             </div>

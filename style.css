@@ -1,6 +1,8 @@
 @font-face { font-family: 'Vcr'; src: url('./fonts/VCR_OSD_MONO.ttf');}
 @font-face { font-family: 'Fipps'; src: url('./fonts/Fipps-Regular.otf');}
-   
+@font-face { font-family: '8-bit'; src: url('./fonts/8-bit_Arcade_In.ttf');}
+@font-face { font-family: '8-bit-out'; src: url('./fonts/8-bit_Arcade_Out.ttf');}
+@font-face { font-family: '3Dventure'; src: url('./fonts/3Dventure.ttf');}
 
 :root{
     --clr-active: #14ff33;
@@ -50,8 +52,9 @@ html{
 }
 
 #scores h2{
+    font-family: "3Dventure";
     text-align: center;
-    font-size: 1.1em;
+    font-size: 1.5em;
     background-color: var(--clr-not-active);
     color: var(--clr-bg);
 }
@@ -209,6 +212,11 @@ body{
     background-repeat: no-repeat;
 }
 
+.error{
+    margin-left: 10px !important;
+    background-color: rgba(255, 20, 20, 0.5) !important;
+}
+
 #contVKey{
     display: flex;
     flex-direction: column;
@@ -227,14 +235,14 @@ body{
 }
 
 .bgAnim{
-    animation: anime_bg 90s 0s ease;
-	-webkit-animation: anime_bg 90s 0s ease;
+    animation: anime_bg 93s 0s ease;
+	-webkit-animation: anime_bg 93s 0s ease;
 }
 
 #virtualKeyboard{
-    border: 0.125em solid var(--clr-pink);
-    color: var(--clr-pink);
-    box-shadow: 0 0 2em 0.2em var(--clr-pink);
+    border: 0.125em solid var(--clr-blue);
+    color: var(--clr-blue);
+    box-shadow: 0 0 2em 0.2em var(--clr-blue);
     background-color:rgba(32, 32, 32, 0.95);
     border-radius: 0.5em;
     padding: 10px;
@@ -249,10 +257,9 @@ body{
 }
 
 h1{
-    font-family: "Fipps";
+    font-family: "3Dventure";
     color: var(--clr-not-active);
-    font-size: 5em;
-    margin-top: -70px;
+    font-size: 7em;
     z-index: 100;
 }
 
@@ -262,8 +269,8 @@ h1{
 }
 
 .touch{
-    border: 0.125em solid var(--clr-not-active);
-    color: var(--clr-not-active);
+    border: 0.125em solid var(--clr-blue);
+    color: var(--clr-blue);
     border-radius: 0.25em;
     height: 80px;
     width: 80px;
@@ -286,6 +293,7 @@ h1{
 .info{
     display: flex;
     width: 70%;
+    margin-bottom: 20px;
     justify-content: space-around;
     flex-wrap: wrap;
     background-color:rgba(32, 32, 32, 0.8);
@@ -294,10 +302,9 @@ h1{
 }
 
 .info p{
-    font-family: "Fipps";
+    font-family: "3Dventure";
     color: var(--clr-not-active);
-    font-size: 1.5em;
-    margin-top: -20px;
+    font-size: 2.5em;
 }
 
 .retryBtn{

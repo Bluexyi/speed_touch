@@ -31,8 +31,6 @@ else{
     ambiance = new Audio('./sounds/TopGear.mp3');
 }
 
-
-
 inputName.addEventListener('input', function () {
     if (this.value.length < 3) {
         if (canStart == true) {
@@ -127,6 +125,7 @@ function checkInput(input) {
         element.classList.remove("active");
     } else {
         bad_input.play();
+        error();
         if (score > 0) {
             displayPoint(-50);
             if (score > 50){
@@ -164,6 +163,16 @@ function startTimer(timer, display) {
         timer--;
 
     }, 1000);
+}
+
+function error(){
+    var delayInMilliseconds = 100;
+    virtualKeyboard.classList.add("error");
+
+    setTimeout(function() {
+        virtualKeyboard.classList.remove("error");
+    }, delayInMilliseconds);
+    
 }
 
 function activeBgAnimation(){
