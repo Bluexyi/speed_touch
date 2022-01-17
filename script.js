@@ -148,7 +148,7 @@ startbtn.addEventListener("click", () => {
         const notStart = document.getElementById('notStart');
         notStart.remove();
         ambiance.play();
-        let maxTime = 9 * 1;
+        let maxTime = 90 * 1;
         display = document.querySelector('#time');
         startTimer(maxTime, display);
         activeInput();
@@ -208,13 +208,12 @@ function gameEnd() {
     document.body.appendChild(divEnd)
 
     divBtnSave.addEventListener("click", () => {
+        createCookie('pseudo', pseudo);
+        createCookie('score', score);
         window.location.href = "./traitement.php";
     });
 
     divBtnNotSave.addEventListener("click", () => {
         window.location.reload();
     });
-
-    createCookie('pseudo', pseudo);
-    createCookie('score', score);
 }
