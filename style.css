@@ -21,6 +21,7 @@
 
 html{
     background-color: black;
+    overflow: hidden;
 }
 
 #notStart{
@@ -32,6 +33,9 @@ html{
     height: 100vh;
     background-color: black;
     display: flex;
+    display:-webkit-box;
+    display:-webkit-flex;
+    display:-webkit-flexbox;
     flex-direction: column;
     background-color: rgba(32, 32, 32, 0.9);
     justify-content: center;
@@ -156,6 +160,7 @@ html{
     line-height: 130%;
     width: 60%;
     margin: 10px;
+    font-size: 1.3em;
 }
 
 .green{
@@ -207,14 +212,21 @@ body{
     justify-content: space-around;
     align-items: center;
     background: url('./bg2.webp');
-    background-position: center;
+    background-position: bottom;
     background-size: 100%;
     background-repeat: no-repeat;
 }
 
-.error{
+.keyBoardError{
     margin-left: 10px !important;
-    background-color: rgba(255, 20, 20, 0.5) !important;
+    border: 0.125em solid var(--clr-red) !important;
+    box-shadow: 0 0 2em 0.2em var(--clr-red) !important;
+}
+
+.touchError{
+    border: 0.125em solid var(--clr-red) !important;
+    background-color: var(--clr-red) !important;
+    color: var(--clr-bg) !important;
 }
 
 #contVKey{
@@ -261,6 +273,7 @@ h1{
     color: var(--clr-not-active);
     font-size: 7em;
     z-index: 100;
+    text-align: center;
 }
 
 .touch p{
@@ -305,6 +318,7 @@ h1{
     font-family: "3Dventure";
     color: var(--clr-not-active);
     font-size: 2.5em;
+    margin: 5px;
 }
 
 .retryBtn{
@@ -366,6 +380,25 @@ h1{
 	}
 }
 
+@keyframes anime_bg {
+	0%{
+        background-size: 100%;
+	}
+	100%{
+        background-size: 125%;
+	}
+}
+
+@-webkit-keyframes anime_bg {
+	0%{
+        background-size: 100%;
+	}
+	100%{
+        background-size: 125%;
+	}
+}
+
+
 @-webkit-keyframes anime_end_text {
 	0%{
         font-size: 3em;
@@ -378,20 +411,157 @@ h1{
 	}
 }
 
-@keyframes anime_bg {
+@keyframes anime_end_text_medium {
 	0%{
-        background-size: 100%;
+        font-size: 1.8em;
+	}
+	50%{
+        font-size: 2em;
 	}
 	100%{
-        background-size: 150%;
+        font-size: 1.8em;
 	}
 }
 
-@-webkit-keyframes anime_bg {
+@-webkit-keyframes anime_end_text_medium {
 	0%{
-        background-size: 100%;
+        font-size: 1.8em;
+	}
+	50%{
+        font-size: 2em;
 	}
 	100%{
-        background-size: 150%;
+        font-size: 1.8em;
 	}
+}
+
+@keyframes anime_end_text_small {
+	0%{
+        font-size: 0.9em;
+	}
+	50%{
+        font-size: 1.1em;
+	}
+	100%{
+        font-size: 0.9em;
+	}
+}
+
+@-webkit-keyframes anime_end_text_small {
+	0%{
+        font-size: 0.9em;
+	}
+	50%{
+        font-size: 1.1em;
+	}
+	100%{
+        font-size: 0.9em;
+	}
+}
+
+
+@media only screen and (max-width: 1000px) {
+    .touch{
+        height: 50px;
+        width: 50px;
+    }
+    
+    .touch p {
+        font-size: 2em;
+    }
+
+    .info p {
+        font-size: 1.7em;
+    }
+
+    h1{
+        font-size: 5em;
+    }
+
+    #pseudo{
+        font-size: 1.5em;
+    }
+
+    #startBtn{
+        width: 150px;
+        height: 50px;
+        font-size: 1.7em;
+    }
+
+    .retryBtn{
+        font-size: 1.7em;
+    }
+
+    #notStart .regle{
+        width: 50%;
+        font-size: 1.1em;
+    }
+
+    #point{
+        font-size: 2em;
+    }
+
+    .end .msgScore {
+        font-size: 1.7em;
+        animation: anime_end_text_medium 1s 0s ease-in-out infinite;
+        -webkit-animation: anime_end_text_medium 1s 0s ease-in-out infinite;
+      }
+}
+
+@media only screen and (max-width: 600px) {
+    .touch{
+        height: 30px;
+        width: 30px;
+    }
+    
+    .touch p {
+        font-size: 1.3em;
+    }
+
+    .info p {
+        font-size: 1.4em;
+    }
+
+    h1{
+        font-size: 3.5em;
+    }
+
+    #pseudo{
+        font-size: 1em;
+        width: 65%;
+    }
+
+    #startBtn {
+        width: 100px;
+        height: 40px;
+        font-size: 1.3em;
+    }
+
+    .retryBtn{
+        height: 40px;
+        font-size: 1em;
+    }
+
+    #notStart .regle{
+        width: 50%;
+        font-size: 0.6em;
+        align-self: end;
+        -webkit-align-self: flex-end;
+        -ms-flex-item-align: end;
+        text-align: end;
+    }
+
+    #notStart{
+        padding-top: 30px;
+    }
+
+    #point{
+        font-size: 2em;
+    }
+
+    .end .msgScore {
+        font-size: 0.9em;
+        animation: anime_end_text_small 1s 0s ease-in-out infinite;
+        -webkit-animation: anime_end_text_small 1s 0s ease-in-out infinite;
+      }
 }
